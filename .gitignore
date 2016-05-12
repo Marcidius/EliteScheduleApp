@@ -1,0 +1,78 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+### Dependency Related
+bower_components/
+node_modules
+platforms/
+plugins/
+publish/
+build/
+built/
+dist/
+temp/
+.DS_Store
+.tmp/
+.sass-cache
+
+### Webstorm Project Files
+.idea/
+.tmp/
+
+### Common file extensions to exclude
+*_i.c
+*_p.c
+*.ilk
+*.iml
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+*.scc
+
+
+### Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac desktop service store files
+.DS_Store
+
+# ========================
+# PROJECT SPECIFIC IGNORES
+# ========================
+
+
+
+=======
+node_modules
+.DS_Store
+*.iml
+tmp
+built
+dist
+npm-debug.log
+.idea
+*.css
+
