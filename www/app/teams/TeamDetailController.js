@@ -7,8 +7,8 @@
   angular.module('eliteApp')
     .controller('TeamDetailController', TeamDetailController);
 
-  TeamDetailController.$inject = ['$stateParams', 'eliteApi'];
-  function TeamDetailController($stateParams, eliteApi) {
+  TeamDetailController.$inject = ['$stateParams', 'eliteApi', '$ionicPopup'];
+  function TeamDetailController($stateParams, eliteApi, $ionicPopup) {
     var vm = this;
     //console.log('$stateParams', $stateParams);
 
@@ -44,6 +44,24 @@
                       .flatten("divisionStandings")
                       .find({ "teamId": vm.teamId})
                       .value();
+
+    vm.following = false;
+
+    vm.toggleFollow = function() {
+      if(vm.following) {
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'Unfollow?',
+          template: 'Are you sure you want to unfollow?'
+        });
+        confirmPopup.then(function (res) {
+          if (res) {
+            vm.following = !vm.following;
+          }
+        });
+      } else {
+        vm.following = !vm.following;
+      }
+    };
 
 
 
