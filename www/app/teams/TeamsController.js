@@ -7,12 +7,15 @@
   angular.module('eliteApp')
     .controller('TeamsController', TeamsController);
 
-  TeamsController.$inject = ['eliteApi'];
-  function TeamsController(eliteApi) {
+  TeamsController.$inject = ['eliteApi', '$http'];
+  function TeamsController(eliteApi, $http) {
     var vm = this;
 
-    var data = eliteApi.getLeagueData();
-    vm.teams = data.teams;
+    eliteApi.getLeagueData()
+      .then(function(data) {
+        vm.teams = data.teams;
+      });
+
   }
 })();
 

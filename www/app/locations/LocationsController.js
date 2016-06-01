@@ -11,8 +11,11 @@
   function LocationsController(eliteApi) {
     var vm = this;
 
-    var data = eliteApi.getLeagueData();
-    vm.locations = data.locations;
+    eliteApi.getLeagueData()
+      .then(function(data) {
+        vm.locations = data.locations;
+      });
+
   }
 })();
 

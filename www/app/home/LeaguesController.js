@@ -10,16 +10,17 @@
   LeaguesController.$inject = ['eliteApi', '$state'];
   function LeaguesController(eliteApi, $state) {
     var vm = this;
-    //var leagues = eliteApi.getLeagues();
-    //var leagueData = eliteApi.getLeagueData();
-    vm.leagues = eliteApi.getLeagues();
-    vm.leagueData = eliteApi.getLeagueData();
+
+    eliteApi.getLeagues()
+      .then(function(data) {
+        vm.leagues = data;
+      });
 
     vm.selectLeague = selectLeague;
 
     function selectLeague(id) {
-      //TODO: select correct league
-      $state.go("app.teams");
+      eliteApi.setLeagueID(id);
+      $state.go('app.teams',{id: id});
     }
 
   }
