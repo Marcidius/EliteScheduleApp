@@ -14,6 +14,9 @@
     var leagueData = undefined;
     var currentLeagueID;
 
+    //self.leaguesCache = DSCacheFactory.get('leaguesCache');
+    //self.leagueDataCache = DSCacheFactory.get('leagueDataCache');
+
     var service = {
       getLeagueData: getLeagueData,
       getLeagues: getLeagues,
@@ -23,16 +26,28 @@
     return service;
 
     function getLeagues() {
+      
       var deferred = $q.defer();
+        //cacheKey = 'leagues'
+        //leaguesData = self.leaguesCache.get(cacheKey);
+
+      // if(leaguesData) {
+      //   console.log('Found data inside cache', leaguesData);
+      //   deferred.resolve(leaguesData);
+      // }
+      // else {
+
       $http.get('http://elite-schedule.net/api/leaguedata')
-        .success(function(data) {
+        .success(function (data) {
+          //self.leaguesCache.put(cacheKey, data);
           deferred.resolve(data);
         })
-        .error(function() {
+        .error(function () {
           console.log('Error while making HTTP call to getLeagues.');
           deferred.reject();
         });
 
+      // }
       return deferred.promise;
     }
 

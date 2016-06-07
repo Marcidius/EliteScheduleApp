@@ -1,7 +1,7 @@
 /**
  * Created by Marcidius on 5/10/2016.
  */
-angular.module('eliteApp', ['ionic'])
+angular.module('eliteApp', ['ionic', 'uiGmapgoogle-maps'])
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar
@@ -13,10 +13,22 @@ angular.module('eliteApp', ['ionic'])
           // org.apache.cordova.statusbar required
           StatusBar.styleDefault();
         }
+
+        // DSCacheFactory('leagueDataCache', { storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: "aggressive"});
+        // DSCacheFactory('leaguesCache', { storageMode: 'localStorage', maxAge: 5000, deleteOnExpire: "aggressive"});
+        // DSCacheFactory('myTeamsCache', { storageMode: 'localStorage'});
+        // DSCacheFactory('staticCache', { storageMode: 'localStorage'});
       });
     })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+
+  uiGmapGoogleMapApiProvider
+      .configure({
+      key: 'AIzaSyBEM9ClOuWlieruSrszke1f7gyqAXnkAk8',
+      v: '3.20',
+      libraries: 'weather, geometry, visualization'
+    });
 
     $stateProvider
       .state('home', {
